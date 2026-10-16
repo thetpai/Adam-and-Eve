@@ -1,7 +1,7 @@
 {
 	"projectFormatVersion": 1,
 	"savedWithRelease": 50602,
-	"name": "Fart",
+	"name": "A&E",
 	"runtime": "c3",
 	"useWorker": "auto",
 	"bundleAddons": false,
@@ -10,6 +10,13 @@
 			"type": "plugin",
 			"id": "Audio",
 			"name": "Audio",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Browser",
+			"name": "Browser",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -31,6 +38,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "NinePatch",
+			"name": "9-patch",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "PlatformInfo",
 			"name": "Platform info",
 			"author": "Scirra",
@@ -45,6 +59,20 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Spritefont2",
+			"name": "Sprite font",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Text",
+			"name": "Text",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Touch",
 			"name": "Touch",
 			"author": "Scirra",
@@ -52,8 +80,8 @@
 		},
 		{
 			"type": "behavior",
-			"id": "MoveTo",
-			"name": "Move To",
+			"id": "Anchor",
+			"name": "Anchor",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -122,7 +150,6 @@
 			"btn_control",
 			"HuGGeENt6kGyixe3hT9tnY",
 			"Fart",
-			"cam",
 			"Touch",
 			"PlatformInfo",
 			"ground",
@@ -131,7 +158,14 @@
 			"cloud",
 			"Eve_spine",
 			"Audio",
-			"cannon"
+			"cannon",
+			"gas_bar",
+			"gas_lvl",
+			"Text",
+			"food",
+			"Browser",
+			"gas_bar_tbox",
+			"spfont_gas"
 		],
 		"subfolders": []
 	},
@@ -144,14 +178,14 @@
 	},
 	"layouts": {
 		"items": [
-			"Layout 1",
+			"gameplay",
 			"Main"
 		],
 		"subfolders": []
 	},
 	"eventSheets": {
 		"items": [
-			"Event sheet 1",
+			"e_gameplay",
 			"Logo"
 		],
 		"subfolders": []
@@ -293,17 +327,17 @@
 				{
 					"items": [
 						{
-							"name": "Eve.atlas",
-							"type": "application/octet-stream",
-							"sid": 399179933942795,
+							"name": "Eve.png",
+							"type": "image/png",
+							"sid": 977641745491362,
 							"file-info": {
 								"purpose": "none"
 							}
 						},
 						{
-							"name": "Eve.png",
-							"type": "image/png",
-							"sid": 250610502461443,
+							"name": "Eve.atlas",
+							"type": "application/octet-stream",
+							"sid": 368806425534166,
 							"file-info": {
 								"purpose": "none"
 							}
@@ -311,7 +345,7 @@
 						{
 							"name": "Eve.skel",
 							"type": "application/octet-stream",
-							"sid": 965156841993845,
+							"sid": 793081440858661,
 							"file-info": {
 								"purpose": "none"
 							}
@@ -386,7 +420,7 @@
 		"pixelRounding": false,
 		"fov": 0.7853981633974483,
 		"useLoaderLayout": false,
-		"fullscreenMode": "letterbox-scale",
+		"fullscreenMode": "scale-outer",
 		"fullscreenQuality": "high",
 		"viewportFit": "auto",
 		"backgroundColor": [
@@ -421,7 +455,7 @@
 		"zNear": 10,
 		"zFar": 100000,
 		"maxSpriteSheetSize": 2048,
-		"loaderStyle": "splash",
+		"loaderStyle": "progress",
 		"preloadSounds": true,
 		"uidAllocationMode": "increment",
 		"zAxisScale": "regular",

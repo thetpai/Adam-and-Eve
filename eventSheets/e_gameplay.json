@@ -1,5 +1,5 @@
 {
-	"name": "Event sheet 1",
+	"name": "e_gameplay",
 	"events": [
 		{
 			"eventType": "variable",
@@ -23,16 +23,6 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "start_jump",
-			"type": "boolean",
-			"initialValue": "true",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 159743164276544
-		},
-		{
-			"eventType": "variable",
 			"name": "Cannon_force",
 			"type": "number",
 			"initialValue": "5000",
@@ -40,6 +30,66 @@
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 394935777479802
+		},
+		{
+			"eventType": "variable",
+			"name": "max_gas",
+			"type": "number",
+			"initialValue": "35",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 945147091019246
+		},
+		{
+			"eventType": "variable",
+			"name": "gas_lvl",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 421219872489734
+		},
+		{
+			"eventType": "variable",
+			"name": "game_state",
+			"type": "string",
+			"initialValue": "start",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 731255301282329
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 742337802243674
+				}
+			],
+			"actions": [
+				{
+					"id": "set-y",
+					"objectClass": "btn_control",
+					"sid": 891341190452783,
+					"parameters": {
+						"y": "ViewportBottom(\"ui\" ) + 250"
+					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "food",
+					"sid": 763170409370895,
+					"parameters": {
+						"animation": "str(choose (1,2,3,4,5))",
+						"from": "beginning"
+					}
+				}
+			],
+			"sid": 140559006539296
 		},
 		{
 			"eventType": "group",
@@ -58,6 +108,21 @@
 						}
 					],
 					"actions": [
+						{
+							"id": "pin-to-object-properties",
+							"objectClass": "Eve_spine",
+							"sid": 326922366534404,
+							"behaviorType": "Pin",
+							"parameters": {
+								"pin-to": "Eve",
+								"x": true,
+								"y": true,
+								"angle": true,
+								"width-type": "no",
+								"height-type": "no",
+								"z": false
+							}
+						},
 						{
 							"id": "pin-to-object-properties",
 							"objectClass": "Fart",
@@ -96,21 +161,6 @@
 							"sid": 250464039988095,
 							"parameters": {
 								"visibility": "invisible"
-							}
-						},
-						{
-							"id": "pin-to-object-properties",
-							"objectClass": "Eve_spine",
-							"sid": 876918431762415,
-							"behaviorType": "Pin",
-							"parameters": {
-								"pin-to": "Eve",
-								"x": true,
-								"y": true,
-								"angle": true,
-								"width-type": "no",
-								"height-type": "no",
-								"z": false
 							}
 						},
 						{
@@ -245,40 +295,54 @@
 							"parameters": {
 								"instance-variable": "can_fart"
 							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 475708621532956,
+							"parameters": {
+								"variable": "gas_lvl",
+								"comparison": 4,
+								"value": "0"
+							}
 						}
 					],
 					"actions": [
 						{
+							"id": "subtract-from-eventvar",
+							"objectClass": "System",
+							"sid": 810964982435175,
+							"parameters": {
+								"variable": "gas_lvl",
+								"value": "1"
+							}
+						},
+						{
+							"id": "set-height",
+							"objectClass": "gas_lvl",
+							"sid": 622631282925171,
+							"parameters": {
+								"height": " ( 970/max_gas ) * gas_lvl"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "spfont_gas",
+							"sid": 423412368463403,
+							"parameters": {
+								"text": "gas_lvl"
+							}
+						},
+						{
 							"id": "shake",
 							"objectClass": "Eve",
 							"sid": 348158232663602,
+							"disabled": true,
 							"behaviorType": "ScrollTo",
 							"parameters": {
 								"magnitude": "20",
 								"duration": "0.4",
 								"mode": "reducing-magnitude"
-							}
-						},
-						{
-							"id": "play-by-name",
-							"objectClass": "Audio",
-							"sid": 518793674449049,
-							"parameters": {
-								"folder": "sounds",
-								"audio-file-name": "\"fart_\" &  str( choose(1,2,3,4,5,6) )",
-								"loop": "not-looping",
-								"volume": "0",
-								"stereo-pan": "0",
-								"tag-optional": "\"\""
-							}
-						},
-						{
-							"id": "set-playback-rate",
-							"objectClass": "Audio",
-							"sid": 197877311842623,
-							"parameters": {
-								"tag": "\"\"",
-								"playback-rate": "timescale"
 							}
 						},
 						{
@@ -298,6 +362,28 @@
 								"duration": "0.3",
 								"type": "once",
 								"tag": "\"can_fart\""
+							}
+						},
+						{
+							"id": "play-by-name",
+							"objectClass": "Audio",
+							"sid": 916706467604990,
+							"parameters": {
+								"folder": "sounds",
+								"audio-file-name": "\"fart_\" &  str( choose(1,2,3,4,5,6) )",
+								"loop": "not-looping",
+								"volume": "0",
+								"stereo-pan": "0",
+								"tag-optional": "\"\""
+							}
+						},
+						{
+							"id": "set-playback-rate",
+							"objectClass": "Audio",
+							"sid": 867315507283098,
+							"parameters": {
+								"tag": "\"\"",
+								"playback-rate": "timescale"
 							}
 						}
 					],
@@ -665,63 +751,6 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "compare-boolean-eventvar",
-							"objectClass": "System",
-							"sid": 596120569489621,
-							"parameters": {
-								"variable": "start_jump"
-							}
-						}
-					],
-					"actions": [],
-					"sid": 491963617806842,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-any-touch-start",
-									"objectClass": "Touch",
-									"sid": 593665652453093
-								}
-							],
-							"actions": [
-								{
-									"id": "set-vector-y",
-									"objectClass": "Eve",
-									"sid": 151004096248978,
-									"behaviorType": "Platform",
-									"parameters": {
-										"vector-y": "- Cannon_force"
-									}
-								},
-								{
-									"id": "set-boolean-eventvar",
-									"objectClass": "System",
-									"sid": 932964549490030,
-									"parameters": {
-										"variable": "start_jump",
-										"value": "false"
-									}
-								},
-								{
-									"id": "set-enabled",
-									"objectClass": "Eve",
-									"sid": 622344319138961,
-									"behaviorType": "Platform",
-									"parameters": {
-										"state": "enabled"
-									}
-								}
-							],
-							"sid": 836735620027311
-						}
-					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
 							"id": "is-on-floor",
 							"objectClass": "Eve",
 							"sid": 769245874087071,
@@ -736,15 +765,6 @@
 							"behaviorType": "Platform",
 							"parameters": {
 								"vector-y": "-3000"
-							}
-						},
-						{
-							"id": "set-boolean-eventvar",
-							"objectClass": "System",
-							"sid": 807099558353412,
-							"parameters": {
-								"variable": "start_jump",
-								"value": "false"
 							}
 						},
 						{
@@ -795,6 +815,228 @@
 							"sid": 533994517514771
 						}
 					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Eve",
+							"sid": 743820697482810,
+							"parameters": {
+								"object": "food"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-collisions-enabled",
+							"objectClass": "food",
+							"sid": 968239454559904,
+							"parameters": {
+								"collisions": "disabled"
+							}
+						},
+						{
+							"id": "move-to-layer",
+							"objectClass": "food",
+							"sid": 345420302552470,
+							"parameters": {
+								"layer": "\"ui\""
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "food",
+							"sid": 812575003913753,
+							"parameters": {
+								"x": "LayerToLayerX(\"gameplay\",\"ui\", Self.X, Self.Y)",
+								"y": "LayerToLayery(\"gameplay\",\"ui\", Self.X, Self.Y)"
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "food",
+							"sid": 288841209099314,
+							"parameters": {
+								"angle": "0"
+							}
+						},
+						{
+							"id": "set-animation-frame",
+							"objectClass": "food",
+							"sid": 776352258544359,
+							"parameters": {
+								"frame-number": "1"
+							}
+						},
+						{
+							"id": "set-active",
+							"objectClass": "food",
+							"sid": 429162714902015,
+							"behaviorType": "Sine",
+							"parameters": {
+								"state": "inactive"
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "food",
+							"sid": 273104215265641,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"a_1\"",
+								"property": "offsetY",
+								"end-value": "Self.Y-300",
+								"time": "0.5",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 495709523938434
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-tweens-finished",
+							"objectClass": "food",
+							"sid": 818991625937219,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"a_1\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "tween-two-properties",
+							"objectClass": "food",
+							"sid": 989204649612159,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"a_2\"",
+								"property": "position",
+								"end-x": "gas_bar.X",
+								"end-y": "gas_lvl.BBoxTop",
+								"time": "0.3",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 258590008296176
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-tweens-finished",
+							"objectClass": "food",
+							"sid": 927323111052020,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"a_2\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 922590062882977,
+							"parameters": {
+								"variable": "gas_lvl",
+								"value": "food.AnimationName "
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "food",
+							"sid": 935572928926377,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"a_3\"",
+								"property": "offsetOpacity",
+								"end-value": "0",
+								"time": "0.3",
+								"ease": "default",
+								"destroy-on-complete": "yes",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "set-height",
+							"objectClass": "gas_lvl",
+							"sid": 379388512510404,
+							"parameters": {
+								"height": " ( 970/max_gas ) * gas_lvl"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "spfont_gas",
+							"sid": 872433146550387,
+							"parameters": {
+								"text": "gas_lvl"
+							}
+						}
+					],
+					"sid": 724165475014797,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 990880879267976,
+									"parameters": {
+										"variable": "gas_lvl",
+										"comparison": 4,
+										"value": "max_gas"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 347291686180377,
+									"parameters": {
+										"variable": "gas_lvl",
+										"value": "max_gas"
+									}
+								},
+								{
+									"id": "set-height",
+									"objectClass": "gas_lvl",
+									"sid": 538451155697515,
+									"parameters": {
+										"height": " ( 970/max_gas ) * gas_lvl"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "spfont_gas",
+									"sid": 115191924370572,
+									"parameters": {
+										"text": "gas_lvl"
+									}
+								}
+							],
+							"sid": 817682295300752
+						}
+					]
 				}
 			],
 			"sid": 906129925574766
@@ -806,6 +1048,10 @@
 			"description": "",
 			"isActiveOnStart": true,
 			"children": [
+				{
+					"eventType": "comment",
+					"text": "full height should be 970"
+				},
 				{
 					"eventType": "block",
 					"conditions": [
@@ -830,12 +1076,174 @@
 								"height-type": "no",
 								"z": false
 							}
+						},
+						{
+							"id": "pin-to-object-properties",
+							"objectClass": "gas_bar_tbox",
+							"sid": 842004150647916,
+							"behaviorType": "Pin",
+							"parameters": {
+								"pin-to": "gas_bar",
+								"x": true,
+								"y": true,
+								"angle": true,
+								"width-type": "no",
+								"height-type": "no",
+								"z": false
+							}
+						},
+						{
+							"id": "pin-to-object-properties",
+							"objectClass": "spfont_gas",
+							"sid": 313292934204426,
+							"behaviorType": "Pin",
+							"parameters": {
+								"pin-to": "gas_bar",
+								"x": true,
+								"y": true,
+								"angle": true,
+								"width-type": "no",
+								"height-type": "no",
+								"z": false
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 757681129226296,
+							"parameters": {
+								"variable": "gas_lvl",
+								"value": "max_gas"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "spfont_gas",
+							"sid": 721066759768239,
+							"parameters": {
+								"text": "gas_lvl"
+							}
 						}
 					],
 					"sid": 488779666323201
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 748042507053872,
+							"parameters": {
+								"interval-seconds": "0.1"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 477915721093093
 				}
 			],
 			"sid": 213567141066993
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Cannon",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 985104792047786,
+							"parameters": {
+								"variable": "game_state",
+								"comparison": 0,
+								"value": "\"start\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 732945448345520,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-touched-object",
+									"objectClass": "Touch",
+									"sid": 805325011021896,
+									"parameters": {
+										"object": "cannon",
+										"type": "start"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-vector-y",
+									"objectClass": "Eve",
+									"sid": 593113226235660,
+									"behaviorType": "Platform",
+									"parameters": {
+										"vector-y": "- Cannon_force"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "Eve",
+									"sid": 168630315040849,
+									"behaviorType": "Platform",
+									"parameters": {
+										"state": "enabled"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 594504071244940,
+									"parameters": {
+										"variable": "game_state",
+										"value": "\"gameplay\""
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "btn_control",
+									"sid": 493859851129617,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"\"",
+										"property": "offsetY",
+										"end-value": "Self.Y - 450",
+										"time": "0.5",
+										"ease": "noease",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "request-fullscreen",
+									"objectClass": "Browser",
+									"sid": 155795795669810,
+									"disabled": true,
+									"parameters": {
+										"mode": "stretch-scale-outer",
+										"navigation-ui": "hide"
+									}
+								}
+							],
+							"sid": 442430808153018
+						}
+					]
+				}
+			],
+			"sid": 427892164107767
 		}
 	],
 	"sid": 489381260686395
