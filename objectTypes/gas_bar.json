@@ -1,20 +1,15 @@
 {
-	"name": "cam",
+	"name": "gas_bar",
 	"plugin-id": "Sprite",
-	"sid": 716763732741208,
+	"sid": 508236669476839,
 	"isGlobal": false,
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [],
 	"behaviorTypes": [
 		{
-			"behaviorId": "scrollto",
-			"name": "ScrollTo",
-			"sid": 869506615858231
-		},
-		{
-			"behaviorId": "MoveTo",
-			"name": "MoveTo",
-			"sid": 660024585916148
+			"behaviorId": "Anchor",
+			"name": "Anchor",
+			"sid": 918697651685073
 		}
 	],
 	"effectTypes": [],
@@ -23,22 +18,22 @@
 			{
 				"frames": [
 					{
-						"width": 169,
-						"height": 169,
+						"width": 109,
+						"height": 1095,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "lossless",
 						"exportQuality": 0.8,
 						"fileType": "image/png",
-						"imageSpriteId": 191113,
+						"imageSpriteId": 7910594,
 						"useCollisionPoly": true,
 						"duration": 1,
 						"tag": ""
 					}
 				],
-				"sid": 853138763622683,
-				"name": "Animation 1",
+				"sid": 719987880024501,
+				"name": "Default",
 				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,

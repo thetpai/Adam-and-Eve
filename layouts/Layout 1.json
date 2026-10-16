@@ -585,8 +585,8 @@
 				{
 					"type": "Eve_spine",
 					"properties": {
-						"spine-atlas-file": 399179933942795,
-						"spine-skeleton-file": 965156841993845,
+						"spine-atlas-file": 368806425534166,
+						"spine-skeleton-file": 793081440858661,
 						"spine-loader-scale": 0.4,
 						"spine-skin": "",
 						"spine-animation": "idle",
@@ -807,6 +807,96 @@
 							1,
 							1,
 							0.25
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "gas_bar",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Default",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 25,
+					"sid": 728154161634316,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {
+						"Anchor": {
+							"properties": {
+								"left-edge": "window-left",
+								"top-edge": "none",
+								"right-edge": "none",
+								"bottom-edge": "none",
+								"enabled": true
+							}
+						}
+					},
+					"materialSurfaceType": "smooth",
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 58,
+						"y": 816,
+						"width": 109,
+						"height": 1095,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "gas_lvl",
+					"properties": {
+						"left-margin": 16,
+						"right-margin": 16,
+						"top-margin": 8,
+						"bottom-margin": 8,
+						"edges": "stretch",
+						"fill": "stretch",
+						"image-scale-x": 1,
+						"image-scale-y": 1,
+						"initially-visible": true,
+						"origin": "bottom",
+						"seams": "exact"
+					},
+					"uid": 26,
+					"sid": 805866597590986,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {
+						"Pin": {
+							"properties": {
+								"destroy": false
+							}
+						}
+					},
+					"materialSurfaceType": "smooth",
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 55.96261891278248,
+						"y": 1265.8908278015826,
+						"width": 36.45698026290988,
+						"height": 971.1938988279483,
+						"originX": 0.5,
+						"originY": 1,
+						"color": [
+							1,
+							1,
+							1,
+							1
 						],
 						"z": 0,
 						"angle": 0

@@ -1,0 +1,29 @@
+{
+	"name": "gas_lvl",
+	"plugin-id": "NinePatch",
+	"sid": 647414372568370,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 124271176230193
+		}
+	],
+	"effectTypes": [],
+	"image": {
+		"width": 37,
+		"height": 82,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 6360295,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}
