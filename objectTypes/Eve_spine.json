@@ -1,0 +1,16 @@
+{
+	"name": "Eve_spine",
+	"plugin-id": "EsotericSoftware_SpineConstruct3",
+	"sid": 264490836020828,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 381801096977695
+		}
+	],
+	"effectTypes": []
+}

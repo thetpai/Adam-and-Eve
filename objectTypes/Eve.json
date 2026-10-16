@@ -1,0 +1,81 @@
+{
+	"name": "Eve",
+	"plugin-id": "Sprite",
+	"sid": 794354431629485,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "can_fart",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 359393312057876
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Platform",
+			"name": "Platform",
+			"sid": 776705181202642
+		},
+		{
+			"behaviorId": "scrollto",
+			"name": "ScrollTo",
+			"sid": 856741993764507
+		},
+		{
+			"behaviorId": "Timer",
+			"name": "Timer",
+			"sid": 189118958533957
+		},
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 774021241053311
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 66,
+						"height": 66,
+						"originX": 0.5116363636363637,
+						"originY": 0.8995151515151516,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 9268449,
+						"collisionPoly": {
+							"points": [
+								0.015151515151515152,
+								0.015151515151515152,
+								0.9848484848484849,
+								0.015151515151515152,
+								0.9848484848484849,
+								0.9848484848484849,
+								0.015151515151515152,
+								0.9848484848484849
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 850830447103535,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

@@ -1,0 +1,71 @@
+{
+	"name": "cloud",
+	"plugin-id": "Sprite",
+	"sid": 147057376485155,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "can_touch",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 779202839372667
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "jumpthru",
+			"name": "Jumpthru",
+			"sid": 636939656341359
+		},
+		{
+			"behaviorId": "Timer",
+			"name": "Timer",
+			"sid": 910954395319477
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 221,
+						"height": 157,
+						"originX": 0.5113122171945701,
+						"originY": 0.4840764331210191,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 3969806,
+						"collisionPoly": {
+							"points": [
+								0.02941180065711322,
+								0.27070073066924394,
+								1,
+								0.2675162674387041,
+								0.9886877674890292,
+								0.722929965801874,
+								0.058823514672600566,
+								0.7165604780700292
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 780729065849396,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

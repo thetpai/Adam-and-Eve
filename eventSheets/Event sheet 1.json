@@ -1,0 +1,807 @@
+{
+	"name": "Event sheet 1",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "Fart",
+			"type": "number",
+			"initialValue": "100",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 391196340783651
+		},
+		{
+			"eventType": "variable",
+			"name": "spd",
+			"type": "number",
+			"initialValue": "3000",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 430739084721265
+		},
+		{
+			"eventType": "variable",
+			"name": "start_jump",
+			"type": "boolean",
+			"initialValue": "true",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 159743164276544
+		},
+		{
+			"eventType": "variable",
+			"name": "Cannon_force",
+			"type": "number",
+			"initialValue": "5000",
+			"comment": "force of the cannon",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 394935777479802
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 476317305902427
+				}
+			],
+			"actions": [
+				{
+					"id": "pin-to-object-properties",
+					"objectClass": "Fart",
+					"sid": 437425628433680,
+					"behaviorType": "Pin",
+					"parameters": {
+						"pin-to": "Eve",
+						"x": true,
+						"y": true,
+						"angle": true,
+						"width-type": "no",
+						"height-type": "no",
+						"z": false
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "Fart",
+					"sid": 378795189757247,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "cam",
+					"sid": 284600578879787,
+					"disabled": true,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				},
+				{
+					"id": "set-enabled",
+					"objectClass": "Eve",
+					"sid": 704105780346757,
+					"behaviorType": "Platform",
+					"parameters": {
+						"state": "disabled"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "Eve",
+					"sid": 667529437498697,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				},
+				{
+					"id": "pin-to-object-properties",
+					"objectClass": "Eve_spine",
+					"sid": 607231608842411,
+					"behaviorType": "Pin",
+					"parameters": {
+						"pin-to": "Eve",
+						"x": true,
+						"y": true,
+						"angle": true,
+						"width-type": "no",
+						"height-type": "no",
+						"z": false
+					}
+				},
+				{
+					"id": "set-time-scale",
+					"objectClass": "System",
+					"sid": 521242779634126,
+					"parameters": {
+						"time-scale": "1"
+					}
+				}
+			],
+			"sid": 541488049889224
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-timer",
+					"objectClass": "Eve",
+					"sid": 690355402632687,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "\"can_fart\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "toggle-boolean-instvar",
+					"objectClass": "Eve",
+					"sid": 100786292407314,
+					"parameters": {
+						"instance-variable": "can_fart"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "Eve",
+					"sid": 251952447928519,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"\"",
+						"property": "offsetAngle",
+						"end-value": "0",
+						"time": "0.4",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 868502162981813
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-falling",
+					"objectClass": "Eve",
+					"sid": 334580268130203,
+					"behaviorType": "Platform"
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 417753632010858
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "Eve_spine",
+					"sid": 855790286881710,
+					"parameters": {
+						"track-index": "0",
+						"animation": "\"fall\"",
+						"loop": false,
+						"additive": "enabled"
+					}
+				}
+			],
+			"sid": 275028192201247
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-jumping",
+					"objectClass": "Eve",
+					"sid": 621486003335356,
+					"behaviorType": "Platform"
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 675797587201086
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "Eve_spine",
+					"sid": 268753080307168,
+					"parameters": {
+						"track-index": "0",
+						"animation": "\"fly\"",
+						"loop": true,
+						"additive": "enabled"
+					}
+				}
+			],
+			"sid": 691926731404111
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-touched-object",
+					"objectClass": "Touch",
+					"sid": 101365215675835,
+					"parameters": {
+						"object": "btn_control",
+						"type": "start"
+					}
+				},
+				{
+					"id": "is-boolean-instance-variable-set",
+					"objectClass": "Eve",
+					"sid": 128624889157276,
+					"parameters": {
+						"instance-variable": "can_fart"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "shake",
+					"objectClass": "Eve",
+					"sid": 184628714512704,
+					"behaviorType": "ScrollTo",
+					"parameters": {
+						"magnitude": "20",
+						"duration": "0.4",
+						"mode": "reducing-magnitude"
+					}
+				},
+				{
+					"id": "play-by-name",
+					"objectClass": "Audio",
+					"sid": 325097121755547,
+					"parameters": {
+						"folder": "sounds",
+						"audio-file-name": "\"fart_\" &  str( choose(1,2,3,4,5,6) )",
+						"loop": "not-looping",
+						"volume": "0",
+						"stereo-pan": "0",
+						"tag-optional": "\"\""
+					}
+				},
+				{
+					"id": "set-playback-rate",
+					"objectClass": "Audio",
+					"sid": 733203457076127,
+					"parameters": {
+						"tag": "\"\"",
+						"playback-rate": "timescale"
+					}
+				},
+				{
+					"id": "toggle-boolean-instvar",
+					"objectClass": "Eve",
+					"sid": 699236504827673,
+					"parameters": {
+						"instance-variable": "can_fart"
+					}
+				},
+				{
+					"id": "start-timer",
+					"objectClass": "Eve",
+					"sid": 973902881648405,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "0.3",
+						"type": "once",
+						"tag": "\"can_fart\""
+					}
+				}
+			],
+			"sid": 313118020437615,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "btn_control",
+							"sid": 540433792810285,
+							"parameters": {
+								"animation": "\"left\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "mirror",
+							"objectClass": "Eve_spine",
+							"sid": 376584377698294,
+							"parameters": {
+								"is-mirrored": false
+							}
+						},
+						{
+							"id": "set-vector-x",
+							"objectClass": "Eve",
+							"sid": 901278984672294,
+							"behaviorType": "Platform",
+							"parameters": {
+								"vector-x": "800"
+							}
+						},
+						{
+							"id": "set-vector-y",
+							"objectClass": "Eve",
+							"sid": 291083804109062,
+							"behaviorType": "Platform",
+							"parameters": {
+								"vector-y": "- spd"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "Fart",
+							"sid": 392609571171416,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "Fart",
+							"sid": 582789018949241,
+							"parameters": {
+								"animation": "\"left\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "Eve",
+							"sid": 500524642503886,
+							"disabled": true,
+							"parameters": {
+								"angle": "30"
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "Eve",
+							"sid": 412788546870685,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"\"",
+								"property": "offsetAngle",
+								"end-value": "15",
+								"time": "0.5",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 136807764585219
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "btn_control",
+							"sid": 271786286304238,
+							"parameters": {
+								"animation": "\"right\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "mirror",
+							"objectClass": "Eve_spine",
+							"sid": 614874274064754,
+							"parameters": {
+								"is-mirrored": true
+							}
+						},
+						{
+							"id": "set-vector-x",
+							"objectClass": "Eve",
+							"sid": 765328888189137,
+							"behaviorType": "Platform",
+							"parameters": {
+								"vector-x": "-800"
+							}
+						},
+						{
+							"id": "set-vector-y",
+							"objectClass": "Eve",
+							"sid": 576058526458220,
+							"behaviorType": "Platform",
+							"parameters": {
+								"vector-y": "-spd"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "Fart",
+							"sid": 521177634050131,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "Fart",
+							"sid": 303475096605180,
+							"parameters": {
+								"animation": "\"right\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "Eve",
+							"sid": 267461095054736,
+							"disabled": true,
+							"parameters": {
+								"angle": "-30"
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "Eve",
+							"sid": 940238069161924,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"\"",
+								"property": "offsetAngle",
+								"end-value": "-15",
+								"time": "0.5",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 465927348713232
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "btn_control",
+							"sid": 793473232481147,
+							"parameters": {
+								"animation": "\"mid\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-vector-y",
+							"objectClass": "Eve",
+							"sid": 564128268066386,
+							"behaviorType": "Platform",
+							"parameters": {
+								"vector-y": "-spd *1.3"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "Fart",
+							"sid": 943266661230872,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "Fart",
+							"sid": 265600527981289,
+							"parameters": {
+								"animation": "\"mid\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "set-angle",
+							"objectClass": "Eve",
+							"sid": 936879814087333,
+							"disabled": true,
+							"parameters": {
+								"angle": "0"
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "Eve",
+							"sid": 319397272537257,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"\"",
+								"property": "offsetAngle",
+								"end-value": "0",
+								"time": "0.3",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 704826258492955
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 664926419225213,
+					"parameters": {
+						"interval-seconds": "0.02"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 701119552847371,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "cloud",
+							"sid": 997799664185308,
+							"parameters": {
+								"instance-variable": "can_touch"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-opacity",
+							"objectClass": "cloud",
+							"sid": 447195532616105,
+							"parameters": {
+								"opacity": "Self.Opacity - 2"
+							}
+						}
+					],
+					"sid": 613083554257693,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-opacity",
+									"objectClass": "cloud",
+									"sid": 689173199237508,
+									"parameters": {
+										"comparison": 3,
+										"opacity": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "cloud",
+									"sid": 703969571748180
+								}
+							],
+							"sid": 729914445306163
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 191777614004360,
+							"parameters": {
+								"first-value": "LayoutScale",
+								"comparison": 5,
+								"second-value": "0.5"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-layout-scale",
+							"objectClass": "System",
+							"sid": 745601845938948,
+							"parameters": {
+								"scale": "0.8 -  (  distance(Eve.X,Eve.y, ground.X, ground.Y ) /60000   )"
+							}
+						}
+					],
+					"sid": 218679993276365
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 684498035920323,
+							"parameters": {
+								"first-value": "LayoutScale",
+								"comparison": 2,
+								"second-value": "0.5"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-layout-scale",
+							"objectClass": "System",
+							"sid": 301685943447470,
+							"parameters": {
+								"scale": "0.5"
+							}
+						}
+					],
+					"sid": 266183263851297
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 912437211513899,
+					"parameters": {
+						"variable": "start_jump"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 356775986112743,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-any-touch-start",
+							"objectClass": "Touch",
+							"sid": 609940955712274
+						}
+					],
+					"actions": [
+						{
+							"id": "set-vector-y",
+							"objectClass": "Eve",
+							"sid": 254493735259655,
+							"behaviorType": "Platform",
+							"parameters": {
+								"vector-y": "- Cannon_force"
+							}
+						},
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 648580382409258,
+							"parameters": {
+								"variable": "start_jump",
+								"value": "false"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "Eve",
+							"sid": 167026155467007,
+							"behaviorType": "Platform",
+							"parameters": {
+								"state": "enabled"
+							}
+						}
+					],
+					"sid": 549952631616580
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-on-floor",
+					"objectClass": "Eve",
+					"sid": 997282159135378,
+					"behaviorType": "Platform"
+				}
+			],
+			"actions": [
+				{
+					"id": "set-vector-y",
+					"objectClass": "Eve",
+					"sid": 974865092220332,
+					"behaviorType": "Platform",
+					"parameters": {
+						"vector-y": "-3000"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 906698069256707,
+					"parameters": {
+						"variable": "start_jump",
+						"value": "false"
+					}
+				},
+				{
+					"id": "shake",
+					"objectClass": "Eve",
+					"sid": 192047895843404,
+					"behaviorType": "ScrollTo",
+					"parameters": {
+						"magnitude": "60",
+						"duration": "0.6",
+						"mode": "reducing-magnitude"
+					}
+				}
+			],
+			"sid": 652283568443375,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Eve",
+							"sid": 900153348590165,
+							"parameters": {
+								"object": "cloud"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "cloud",
+							"sid": 724566133919532,
+							"parameters": {
+								"instance-variable": "can_touch",
+								"value": "false"
+							}
+						},
+						{
+							"id": "set-collisions-enabled",
+							"objectClass": "cloud",
+							"sid": 968732515941770,
+							"parameters": {
+								"collisions": "disabled"
+							}
+						}
+					],
+					"sid": 127142612271790
+				},
+				{
+					"eventType": "comment",
+					"text": "\n\n\n\n\n\nCannon x5\nFood x 8\n\nSpring x5 ( cloud, bird, )\n\nPower up ( U chain tee, Maganet, heart, shield   )\n\nenemies ( leaf, thunder, thunder pattern  )\n\n\nUI ( Sicent UI )\n\nreset cloud item\n\n\n\n\n\n\n\n\n\n\n\n\n"
+				}
+			]
+		}
+	],
+	"sid": 489381260686395
+}

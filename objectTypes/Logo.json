@@ -1,0 +1,56 @@
+{
+	"name": "Logo",
+	"plugin-id": "Sprite",
+	"sid": 123927369520100,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Sin",
+			"name": "w_sine",
+			"sid": 243692215162392
+		},
+		{
+			"behaviorId": "Sin",
+			"name": "h_sine",
+			"sid": 562526386513094
+		},
+		{
+			"behaviorId": "Sin",
+			"name": "v_sine",
+			"sid": 443944440939275
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 749,
+						"height": 485,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 7911781,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 882540216698244,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

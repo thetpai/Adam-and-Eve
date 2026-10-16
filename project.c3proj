@@ -1,0 +1,436 @@
+{
+	"projectFormatVersion": 1,
+	"savedWithRelease": 50602,
+	"name": "Fart",
+	"runtime": "c3",
+	"useWorker": "auto",
+	"bundleAddons": false,
+	"usedAddons": [
+		{
+			"type": "plugin",
+			"id": "Audio",
+			"name": "Audio",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "EsotericSoftware_SpineConstruct3",
+			"name": "Spine",
+			"author": "Esoteric Software",
+			"bundled": false,
+			"version": "4.3.13",
+			"sdkVersion": 2
+		},
+		{
+			"type": "plugin",
+			"id": "Mouse",
+			"name": "Mouse",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "PlatformInfo",
+			"name": "Platform info",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Sprite",
+			"name": "Sprite",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Touch",
+			"name": "Touch",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "MoveTo",
+			"name": "Move To",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Pin",
+			"name": "Pin",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Platform",
+			"name": "Platform",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Sin",
+			"name": "Sine",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Timer",
+			"name": "Timer",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Tween",
+			"name": "Tween",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "jumpthru",
+			"name": "Jump-thru",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "scrollto",
+			"name": "Scroll To",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "solid",
+			"name": "Solid",
+			"author": "Scirra",
+			"bundled": false
+		}
+	],
+	"uniqueId": "xnhuw7opgb5",
+	"objectTypes": {
+		"items": [
+			"Eve",
+			"Mouse",
+			"btn_control",
+			"HuGGeENt6kGyixe3hT9tnY",
+			"Fart",
+			"cam",
+			"Touch",
+			"PlatformInfo",
+			"ground",
+			"bg",
+			"Logo",
+			"cloud",
+			"Eve_spine",
+			"Audio",
+			"cannon"
+		],
+		"subfolders": []
+	},
+	"functionsName": "Functions",
+	"autosaveData": null,
+	"containers": [],
+	"families": {
+		"items": [],
+		"subfolders": []
+	},
+	"layouts": {
+		"items": [
+			"Layout 1",
+			"Main"
+		],
+		"subfolders": []
+	},
+	"eventSheets": {
+		"items": [
+			"Event sheet 1",
+			"Logo"
+		],
+		"subfolders": []
+	},
+	"rootFileFolders": {
+		"script": {
+			"items": [],
+			"subfolders": []
+		},
+		"sound": {
+			"items": [
+				{
+					"name": "fart_1.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 662069519702859,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "fart_2.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 586326910814372,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "fart_3.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 266285925145125,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "fart_5.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 176399986486046,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "fart_4.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 902979576437935,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "fart_6.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 929601071513197,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"music": {
+			"items": [],
+			"subfolders": []
+		},
+		"video": {
+			"items": [],
+			"subfolders": []
+		},
+		"font": {
+			"items": [],
+			"subfolders": []
+		},
+		"icon": {
+			"items": [
+				{
+					"name": "icon-64.png",
+					"type": "image/png",
+					"sid": 885847235432717,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-512.png",
+					"type": "image/png",
+					"sid": 848570968979945,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-256.png",
+					"type": "image/png",
+					"sid": 836239057554782,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-16.png",
+					"type": "image/png",
+					"sid": 808643864644719,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-32.png",
+					"type": "image/png",
+					"sid": 852696884201394,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-128.png",
+					"type": "image/png",
+					"sid": 342866196355087,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "loading-logo.png",
+					"type": "image/png",
+					"sid": 291281978783996,
+					"icon-info": {
+						"purpose": "loading-logo"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"general": {
+			"items": [],
+			"subfolders": [
+				{
+					"items": [
+						{
+							"name": "Eve.atlas",
+							"type": "application/octet-stream",
+							"sid": 399179933942795,
+							"file-info": {
+								"purpose": "none"
+							}
+						},
+						{
+							"name": "Eve.png",
+							"type": "image/png",
+							"sid": 250610502461443,
+							"file-info": {
+								"purpose": "none"
+							}
+						},
+						{
+							"name": "Eve.skel",
+							"type": "application/octet-stream",
+							"sid": 965156841993845,
+							"file-info": {
+								"purpose": "none"
+							}
+						}
+					],
+					"subfolders": [],
+					"name": "Eve"
+				},
+				{
+					"items": [
+						{
+							"name": "cannon.png",
+							"type": "image/png",
+							"sid": 587192995985526,
+							"file-info": {
+								"purpose": "none"
+							}
+						},
+						{
+							"name": "cannon.atlas",
+							"type": "application/octet-stream",
+							"sid": 224762802446306,
+							"file-info": {
+								"purpose": "none"
+							}
+						},
+						{
+							"name": "connon.skel",
+							"type": "application/octet-stream",
+							"sid": 693516400793751,
+							"file-info": {
+								"purpose": "none"
+							}
+						}
+					],
+					"subfolders": [],
+					"name": "Cannon"
+				}
+			]
+		}
+	},
+	"timelines": {
+		"items": [
+			"Timeline 1"
+		],
+		"subfolders": [
+			{
+				"items": [],
+				"subfolders": []
+			}
+		]
+	},
+	"flowcharts": {
+		"items": [
+			"Flowchart 1"
+		],
+		"subfolders": []
+	},
+	"models3d": {
+		"items": [],
+		"subfolders": []
+	},
+	"properties": {
+		"description": "",
+		"version": "1.0.0.0",
+		"autoIncrementVersion": false,
+		"author": "",
+		"authorEmail": "",
+		"authorWebsite": "",
+		"appId": "",
+		"saveLLMContextFile": true,
+		"pixelRounding": false,
+		"fov": 0.7853981633974483,
+		"useLoaderLayout": false,
+		"fullscreenMode": "letterbox-scale",
+		"fullscreenQuality": "high",
+		"viewportFit": "auto",
+		"backgroundColor": [
+			0,
+			0,
+			0,
+			0
+		],
+		"splashColor": [
+			1,
+			1,
+			1,
+			0
+		],
+		"useThemeColor": false,
+		"themeColor": [
+			1,
+			1,
+			1,
+			0
+		],
+		"orientations": "portrait",
+		"webgpu": "auto",
+		"multitexturing": "auto",
+		"gpuPreference": "high-performance",
+		"framerateMode": "vsync",
+		"fixedFramerate": 30,
+		"sampling": "trilinear",
+		"downscaling": "medium",
+		"renderingMode": "auto",
+		"anisotropicFiltering": "auto",
+		"zNear": 10,
+		"zFar": 100000,
+		"maxSpriteSheetSize": 2048,
+		"loaderStyle": "splash",
+		"preloadSounds": true,
+		"uidAllocationMode": "increment",
+		"zAxisScale": "regular",
+		"cordovaiOSScheme": "app",
+		"cordovaAndroidScheme": "https",
+		"exportFileStructure": "folders",
+		"scriptsType": "module"
+	},
+	"viewportWidth": 1080,
+	"viewportHeight": 1920,
+	"firstLayout": null
+}
