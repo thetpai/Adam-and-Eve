@@ -87,9 +87,36 @@
 						"animation": "str(choose (1,2,3,4,5))",
 						"from": "beginning"
 					}
+				},
+				{
+					"id": "set-animation",
+					"objectClass": "cloud",
+					"sid": 555192578936368,
+					"parameters": {
+						"animation": "choose(\"1\",\"2\")",
+						"from": "beginning"
+					}
 				}
 			],
-			"sid": 140559006539296
+			"sid": 140559006539296,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "play-timeline-by-name",
+							"objectClass": "TimelineController",
+							"sid": 750649317012546,
+							"parameters": {
+								"timeline-name": "\"cloud\"",
+								"tags": "\"\""
+							}
+						}
+					],
+					"sid": 285236924240230
+				}
+			]
 		},
 		{
 			"eventType": "group",
@@ -648,55 +675,6 @@
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "is-boolean-instance-variable-set",
-									"objectClass": "cloud",
-									"sid": 814672700231414,
-									"parameters": {
-										"instance-variable": "can_touch"
-									},
-									"isInverted": true
-								}
-							],
-							"actions": [
-								{
-									"id": "set-opacity",
-									"objectClass": "cloud",
-									"sid": 940384090183402,
-									"parameters": {
-										"opacity": "Self.Opacity - 2"
-									}
-								}
-							],
-							"sid": 232737146191081,
-							"children": [
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-opacity",
-											"objectClass": "cloud",
-											"sid": 637565769510412,
-											"parameters": {
-												"comparison": 3,
-												"opacity": "0"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "destroy",
-											"objectClass": "cloud",
-											"sid": 886174211180258
-										}
-									],
-									"sid": 754347605838298
-								}
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
 									"id": "compare-two-values",
 									"objectClass": "System",
 									"sid": 464819162421435,
@@ -771,6 +749,7 @@
 							"id": "shake",
 							"objectClass": "Eve",
 							"sid": 422160241241035,
+							"disabled": true,
 							"behaviorType": "ScrollTo",
 							"parameters": {
 								"magnitude": "60",
@@ -809,6 +788,15 @@
 									"sid": 318877723472346,
 									"parameters": {
 										"collisions": "disabled"
+									}
+								},
+								{
+									"id": "set-animation",
+									"objectClass": "cloud",
+									"sid": 750501145262980,
+									"parameters": {
+										"animation": "Self.AnimationName & \"b\"",
+										"from": "beginning"
 									}
 								}
 							],
@@ -1244,6 +1232,106 @@
 				}
 			],
 			"sid": 427892164107767
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Cloud",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "cloud",
+							"sid": 404846540568319,
+							"parameters": {
+								"animation": "\"1\""
+							}
+						},
+						{
+							"id": "is-animation-playing",
+							"objectClass": "cloud",
+							"sid": 342074537261181,
+							"parameters": {
+								"animation": "\"2\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 182538544571023,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-animation-finished",
+							"objectClass": "cloud",
+							"sid": 701815526894056,
+							"parameters": {
+								"animation": "\"1b\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "cloud",
+							"sid": 261415791871960,
+							"parameters": {
+								"animation": "\"1\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "set-collisions-enabled",
+							"objectClass": "cloud",
+							"sid": 986319664019237,
+							"parameters": {
+								"collisions": "enabled"
+							}
+						}
+					],
+					"sid": 498252276260978
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-animation-finished",
+							"objectClass": "cloud",
+							"sid": 171256415332535,
+							"parameters": {
+								"animation": "\"2b\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "cloud",
+							"sid": 520014930782983,
+							"parameters": {
+								"animation": "\"2\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "set-collisions-enabled",
+							"objectClass": "cloud",
+							"sid": 699044056757963,
+							"parameters": {
+								"collisions": "enabled"
+							}
+						}
+					],
+					"sid": 429792358255546
+				}
+			],
+			"sid": 977491469638558
 		}
 	],
 	"sid": 489381260686395
