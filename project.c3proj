@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 50602,
+	"savedWithRelease": 50603,
 	"name": "A&E",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -68,6 +68,13 @@
 			"type": "plugin",
 			"id": "Text",
 			"name": "Text",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "TiledBg",
+			"name": "Tiled Background",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -174,7 +181,12 @@
 			"gas_bar_tbox",
 			"spfont_gas",
 			"TimelineController",
-			"p"
+			"cam",
+			"apple",
+			"button",
+			"TiledBackground",
+			"Adam",
+			"upgrade"
 		],
 		"subfolders": []
 	},
@@ -195,7 +207,7 @@
 	"eventSheets": {
 		"items": [
 			"e_gameplay",
-			"Logo"
+			"e_main"
 		],
 		"subfolders": []
 	},
@@ -396,32 +408,32 @@
 				{
 					"items": [
 						{
-							"name": "cloud.atlas",
+							"name": "Adam.skel",
 							"type": "application/octet-stream",
-							"sid": 895086921376255,
+							"sid": 788598805332063,
 							"file-info": {
 								"purpose": "none"
 							}
 						},
 						{
-							"name": "cloud.png",
+							"name": "adam.atlas",
+							"type": "application/octet-stream",
+							"sid": 446385323881386,
+							"file-info": {
+								"purpose": "none"
+							}
+						},
+						{
+							"name": "adam.png",
 							"type": "image/png",
-							"sid": 245137820285717,
-							"file-info": {
-								"purpose": "none"
-							}
-						},
-						{
-							"name": "clouds.skel",
-							"type": "application/octet-stream",
-							"sid": 478441489911378,
+							"sid": 179826516299087,
 							"file-info": {
 								"purpose": "none"
 							}
 						}
 					],
 					"subfolders": [],
-					"name": "cloud"
+					"name": "adam"
 				}
 			]
 		}

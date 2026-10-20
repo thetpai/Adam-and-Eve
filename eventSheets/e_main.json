@@ -1,0 +1,154 @@
+{
+	"name": "e_main",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "Mute",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 168732158933011
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 354064472254826
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation-speed",
+					"objectClass": "button",
+					"sid": 433908471770583,
+					"parameters": {
+						"speed": "0"
+					}
+				}
+			],
+			"sid": 554637987183041
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-touched-object",
+					"objectClass": "Touch",
+					"sid": 662224472263272,
+					"parameters": {
+						"object": "button",
+						"type": "start"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 533248594908964,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "button",
+							"sid": 847889309582788,
+							"parameters": {
+								"animation": "\"play\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 259997856408053,
+							"parameters": {
+								"layout": "gameplay"
+							}
+						}
+					],
+					"sid": 216990741200204
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 385295063002980,
+					"parameters": {
+						"variable": "game_state",
+						"comparison": 0,
+						"value": "\"00_preview\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-animation",
+					"objectClass": "Adam",
+					"sid": 297112564808743,
+					"disabled": true,
+					"parameters": {
+						"track-index": "0",
+						"animation": "\"idle\" & choose(\"1\",\"2\",\"3\")",
+						"loop": false,
+						"delay": "0",
+						"additive": "disabled"
+					}
+				},
+				{
+					"id": "add-animation",
+					"objectClass": "Adam",
+					"sid": 528870140761928,
+					"parameters": {
+						"track-index": "0",
+						"animation": "\"tool\" & choose(\"1\",\"2\",\"3\", \"4\")",
+						"loop": false,
+						"delay": "0",
+						"additive": "disabled"
+					}
+				}
+			],
+			"sid": 154908119862117,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-animation-event",
+							"objectClass": "Adam",
+							"sid": 814195039465908,
+							"parameters": {
+								"event": "\"end\"",
+								"track": "0",
+								"animation": "\"\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "Adam",
+							"sid": 999762870139868,
+							"disabled": true,
+							"parameters": {
+								"track-index": "-1",
+								"animation": "\"tool\" &  choose(\"1\",\"2\",\"3\")",
+								"loop": false,
+								"additive": "disabled"
+							}
+						}
+					],
+					"sid": 455692275852271
+				}
+			]
+		}
+	],
+	"sid": 776142930314676
+}

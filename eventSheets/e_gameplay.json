@@ -35,7 +35,7 @@
 			"eventType": "variable",
 			"name": "max_gas",
 			"type": "number",
-			"initialValue": "35",
+			"initialValue": "99",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
@@ -55,11 +55,513 @@
 			"eventType": "variable",
 			"name": "game_state",
 			"type": "string",
-			"initialValue": "start",
+			"initialValue": "00_idle",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 731255301282329
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "State_manager",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 138182780404437
+						}
+					],
+					"actions": [
+						{
+							"id": "pin-to-object-properties",
+							"objectClass": "upgrade",
+							"sid": 810324307062363,
+							"behaviorType": "Pin",
+							"parameters": {
+								"pin-to": "cannon",
+								"x": true,
+								"y": true,
+								"angle": true,
+								"width-type": "no",
+								"height-type": "no",
+								"z": false
+							}
+						}
+					],
+					"sid": 157543067124005
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 764475936524267,
+							"parameters": {
+								"variable": "game_state",
+								"comparison": 0,
+								"value": "\"00_idle\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-x",
+							"objectClass": "Eve",
+							"sid": 178784619990869,
+							"disabled": true,
+							"parameters": {
+								"x": "4755"
+							}
+						},
+						{
+							"id": "set-y",
+							"objectClass": "Eve",
+							"sid": 910630498657266,
+							"disabled": true,
+							"parameters": {
+								"y": "88700"
+							}
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "Eve",
+							"sid": 819548625409634,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"idle\"",
+								"property": "position",
+								"end-x": "4850",
+								"end-y": "88700",
+								"time": "0.6",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "gas_bar",
+							"sid": 947954219581463,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "gas_bar_tbox",
+							"sid": 330787879442357,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "spfont_gas",
+							"sid": 501526353307054,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "gas_lvl",
+							"sid": 243371467790051,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 982182233376393,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-touched-object",
+									"objectClass": "Touch",
+									"sid": 330355739301997,
+									"parameters": {
+										"object": "button",
+										"type": "start"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 993842420877597,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "button",
+											"sid": 580292367395751,
+											"parameters": {
+												"animation": "\"play\""
+											}
+										},
+										{
+											"id": "compare-opacity",
+											"objectClass": "button",
+											"sid": 825398173702385,
+											"parameters": {
+												"comparison": 0,
+												"opacity": "100"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 481058066531590,
+											"parameters": {
+												"variable": "game_state",
+												"value": "\"01_getready\""
+											}
+										}
+									],
+									"sid": 218115692397749
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "button",
+											"sid": 554703675859435,
+											"parameters": {
+												"animation": "\"sound\""
+											}
+										},
+										{
+											"id": "compare-opacity",
+											"objectClass": "button",
+											"sid": 735124713817899,
+											"parameters": {
+												"comparison": 0,
+												"opacity": "100"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 552236156086169,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-animation-frame",
+													"objectClass": "button",
+													"sid": 560300332354615,
+													"parameters": {
+														"comparison": 0,
+														"number": "0"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-animation-frame",
+													"objectClass": "button",
+													"sid": 205328660784588,
+													"parameters": {
+														"frame-number": "1"
+													}
+												},
+												{
+													"id": "set-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 414211449690129,
+													"parameters": {
+														"variable": "Mute",
+														"value": "true"
+													}
+												}
+											],
+											"sid": 691381571841949
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 927022725230741
+												}
+											],
+											"actions": [
+												{
+													"id": "set-animation-frame",
+													"objectClass": "button",
+													"sid": 862572687015608,
+													"parameters": {
+														"frame-number": "0"
+													}
+												},
+												{
+													"id": "set-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 531925775926770,
+													"parameters": {
+														"variable": "Mute",
+														"value": "false"
+													}
+												}
+											],
+											"sid": 118585785187790
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 345494749184229,
+							"parameters": {
+								"variable": "game_state",
+								"comparison": 0,
+								"value": "\"01_getready\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-x",
+							"objectClass": "Eve",
+							"sid": 890004125291234,
+							"disabled": true,
+							"parameters": {
+								"x": "5045"
+							}
+						},
+						{
+							"id": "set-y",
+							"objectClass": "Eve",
+							"sid": 438175088502089,
+							"disabled": true,
+							"parameters": {
+								"y": "89000"
+							}
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "Eve",
+							"sid": 707730099115677,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"idle\"",
+								"property": "position",
+								"end-x": "5045",
+								"end-y": "89000",
+								"time": "0.6",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "pin-to-object-properties",
+							"objectClass": "Eve_spine",
+							"sid": 621578790287578,
+							"behaviorType": "Pin",
+							"parameters": {
+								"pin-to": "Eve",
+								"x": true,
+								"y": true,
+								"angle": true,
+								"width-type": "no",
+								"height-type": "no",
+								"z": false
+							}
+						}
+					],
+					"sid": 358116616208552,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "every-x-seconds",
+									"objectClass": "System",
+									"sid": 741983147346554,
+									"parameters": {
+										"interval-seconds": "0.02"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-opacity",
+									"objectClass": "upgrade",
+									"sid": 744259217271339,
+									"parameters": {
+										"opacity": "Self.Opacity - 4"
+									}
+								},
+								{
+									"id": "set-opacity",
+									"objectClass": "button",
+									"sid": 629385335980939,
+									"parameters": {
+										"opacity": "Self.Opacity - 4"
+									}
+								},
+								{
+									"id": "set-opacity",
+									"objectClass": "Logo",
+									"sid": 541472182560482,
+									"parameters": {
+										"opacity": "Self.Opacity - 4"
+									}
+								}
+							],
+							"sid": 604009368822972
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 863262663874859,
+							"parameters": {
+								"variable": "game_state",
+								"comparison": 0,
+								"value": "\"02_gameplay\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 162151434488724
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 965499384247765,
+							"parameters": {
+								"variable": "game_state",
+								"comparison": 0,
+								"value": "\"03_win\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 764788101758476
+				}
+			],
+			"sid": 976290408258469
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Scrolling",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 279113299789128,
+							"parameters": {
+								"variable": "game_state",
+								"comparison": 0,
+								"value": "\"01_getready\""
+							}
+						},
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 577929765187702,
+							"parameters": {
+								"interval-seconds": "0.02"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 562054081883754,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 897838444208926,
+									"parameters": {
+										"first-value": "LayoutScale",
+										"comparison": 5,
+										"second-value": "0.5"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-layout-scale",
+									"objectClass": "System",
+									"sid": 775978326476378,
+									"parameters": {
+										"scale": "1 -  (  distance(Eve.X,Eve.y, ground.X, ground.Y ) /60000   )"
+									}
+								}
+							],
+							"sid": 675603298364950
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 389136042997486,
+									"parameters": {
+										"first-value": "LayoutScale",
+										"comparison": 2,
+										"second-value": "0.5"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-layout-scale",
+									"objectClass": "System",
+									"sid": 125372806303999,
+									"parameters": {
+										"scale": "0.5"
+									}
+								}
+							],
+							"sid": 788265046416889
+						}
+					]
+				}
+			],
+			"sid": 721166887169840
 		},
 		{
 			"eventType": "block",
@@ -98,25 +600,7 @@
 					}
 				}
 			],
-			"sid": 140559006539296,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [],
-					"actions": [
-						{
-							"id": "play-timeline-by-name",
-							"objectClass": "TimelineController",
-							"sid": 750649317012546,
-							"parameters": {
-								"timeline-name": "\"cloud\"",
-								"tags": "\"\""
-							}
-						}
-					],
-					"sid": 285236924240230
-				}
-			]
+			"sid": 140559006539296
 		},
 		{
 			"eventType": "group",
@@ -135,21 +619,6 @@
 						}
 					],
 					"actions": [
-						{
-							"id": "pin-to-object-properties",
-							"objectClass": "Eve_spine",
-							"sid": 326922366534404,
-							"behaviorType": "Pin",
-							"parameters": {
-								"pin-to": "Eve",
-								"x": true,
-								"y": true,
-								"angle": true,
-								"width-type": "no",
-								"height-type": "no",
-								"z": false
-							}
-						},
 						{
 							"id": "pin-to-object-properties",
 							"objectClass": "Fart",
@@ -197,6 +666,15 @@
 							"parameters": {
 								"time-scale": "1"
 							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "Eve",
+							"sid": 606862585391345,
+							"behaviorType": "ScrollTo",
+							"parameters": {
+								"state": "enabled"
+							}
 						}
 					],
 					"sid": 672830498919302
@@ -205,445 +683,51 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "on-timer",
-							"objectClass": "Eve",
-							"sid": 129703411091798,
-							"behaviorType": "Timer",
-							"parameters": {
-								"tag": "\"can_fart\""
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "toggle-boolean-instvar",
-							"objectClass": "Eve",
-							"sid": 242509780433468,
-							"parameters": {
-								"instance-variable": "can_fart"
-							}
-						},
-						{
-							"id": "tween-one-property",
-							"objectClass": "Eve",
-							"sid": 817695758178449,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "\"\"",
-								"property": "offsetAngle",
-								"end-value": "0",
-								"time": "0.4",
-								"ease": "default",
-								"destroy-on-complete": "no",
-								"loop": "no",
-								"ping-pong": "no",
-								"repeat-count": "1"
-							}
-						}
-					],
-					"sid": 807103346694966
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-falling",
-							"objectClass": "Eve",
-							"sid": 960315002817694,
-							"behaviorType": "Platform"
-						},
-						{
-							"id": "trigger-once-while-true",
-							"objectClass": "System",
-							"sid": 636830836013112
-						}
-					],
-					"actions": [
-						{
-							"id": "set-animation",
-							"objectClass": "Eve_spine",
-							"sid": 517020917017928,
-							"parameters": {
-								"track-index": "0",
-								"animation": "\"fall\"",
-								"loop": false,
-								"additive": "enabled"
-							}
-						}
-					],
-					"sid": 370323522262353
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-jumping",
-							"objectClass": "Eve",
-							"sid": 979755966334680,
-							"behaviorType": "Platform"
-						},
-						{
-							"id": "trigger-once-while-true",
-							"objectClass": "System",
-							"sid": 738617843947768
-						}
-					],
-					"actions": [
-						{
-							"id": "set-animation",
-							"objectClass": "Eve_spine",
-							"sid": 257421998382219,
-							"parameters": {
-								"track-index": "0",
-								"animation": "\"fly\"",
-								"loop": true,
-								"additive": "enabled"
-							}
-						}
-					],
-					"sid": 679745131485500
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-touched-object",
-							"objectClass": "Touch",
-							"sid": 272300372853588,
-							"parameters": {
-								"object": "btn_control",
-								"type": "start"
-							}
-						},
-						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "Eve",
-							"sid": 665569155825653,
-							"parameters": {
-								"instance-variable": "can_fart"
-							}
-						},
-						{
 							"id": "compare-eventvar",
 							"objectClass": "System",
-							"sid": 475708621532956,
+							"sid": 760657609094316,
 							"parameters": {
-								"variable": "gas_lvl",
-								"comparison": 4,
-								"value": "0"
+								"variable": "game_state",
+								"comparison": 0,
+								"value": "\"gameplay\""
 							}
 						}
 					],
-					"actions": [
-						{
-							"id": "subtract-from-eventvar",
-							"objectClass": "System",
-							"sid": 810964982435175,
-							"parameters": {
-								"variable": "gas_lvl",
-								"value": "1"
-							}
-						},
-						{
-							"id": "set-height",
-							"objectClass": "gas_lvl",
-							"sid": 622631282925171,
-							"parameters": {
-								"height": " ( 970/max_gas ) * gas_lvl"
-							}
-						},
-						{
-							"id": "set-text",
-							"objectClass": "spfont_gas",
-							"sid": 423412368463403,
-							"parameters": {
-								"text": "gas_lvl"
-							}
-						},
-						{
-							"id": "shake",
-							"objectClass": "Eve",
-							"sid": 348158232663602,
-							"disabled": true,
-							"behaviorType": "ScrollTo",
-							"parameters": {
-								"magnitude": "20",
-								"duration": "0.4",
-								"mode": "reducing-magnitude"
-							}
-						},
-						{
-							"id": "toggle-boolean-instvar",
-							"objectClass": "Eve",
-							"sid": 446632345312861,
-							"parameters": {
-								"instance-variable": "can_fart"
-							}
-						},
-						{
-							"id": "start-timer",
-							"objectClass": "Eve",
-							"sid": 641568247959592,
-							"behaviorType": "Timer",
-							"parameters": {
-								"duration": "0.3",
-								"type": "once",
-								"tag": "\"can_fart\""
-							}
-						},
-						{
-							"id": "play-by-name",
-							"objectClass": "Audio",
-							"sid": 916706467604990,
-							"parameters": {
-								"folder": "sounds",
-								"audio-file-name": "\"fart_\" &  str( choose(1,2,3,4,5,6) )",
-								"loop": "not-looping",
-								"volume": "0",
-								"stereo-pan": "0",
-								"tag-optional": "\"\""
-							}
-						},
-						{
-							"id": "set-playback-rate",
-							"objectClass": "Audio",
-							"sid": 867315507283098,
-							"parameters": {
-								"tag": "\"\"",
-								"playback-rate": "timescale"
-							}
-						}
-					],
-					"sid": 352337850758151,
+					"actions": [],
+					"sid": 617228269586634,
 					"children": [
 						{
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "is-animation-playing",
-									"objectClass": "btn_control",
-									"sid": 610307436829607,
+									"id": "on-timer",
+									"objectClass": "Eve",
+									"sid": 966160490936004,
+									"behaviorType": "Timer",
 									"parameters": {
-										"animation": "\"left\""
+										"tag": "\"can_fart\""
 									}
 								}
 							],
 							"actions": [
 								{
-									"id": "mirror",
-									"objectClass": "Eve_spine",
-									"sid": 655003144644199,
-									"parameters": {
-										"is-mirrored": false
-									}
-								},
-								{
-									"id": "set-vector-x",
+									"id": "toggle-boolean-instvar",
 									"objectClass": "Eve",
-									"sid": 741829811757884,
-									"behaviorType": "Platform",
+									"sid": 141733789505194,
 									"parameters": {
-										"vector-x": "800"
-									}
-								},
-								{
-									"id": "set-vector-y",
-									"objectClass": "Eve",
-									"sid": 853580081941671,
-									"behaviorType": "Platform",
-									"parameters": {
-										"vector-y": "- spd"
-									}
-								},
-								{
-									"id": "set-visible",
-									"objectClass": "Fart",
-									"sid": 256094488385789,
-									"parameters": {
-										"visibility": "visible"
-									}
-								},
-								{
-									"id": "set-animation",
-									"objectClass": "Fart",
-									"sid": 195460132412413,
-									"parameters": {
-										"animation": "\"left\"",
-										"from": "beginning"
-									}
-								},
-								{
-									"id": "set-angle",
-									"objectClass": "Eve",
-									"sid": 822382834945869,
-									"disabled": true,
-									"parameters": {
-										"angle": "30"
+										"instance-variable": "can_fart"
 									}
 								},
 								{
 									"id": "tween-one-property",
 									"objectClass": "Eve",
-									"sid": 472038809611225,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"\"",
-										"property": "offsetAngle",
-										"end-value": "15",
-										"time": "0.5",
-										"ease": "default",
-										"destroy-on-complete": "no",
-										"loop": "no",
-										"ping-pong": "no",
-										"repeat-count": "1"
-									}
-								}
-							],
-							"sid": 345477253371706
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "is-animation-playing",
-									"objectClass": "btn_control",
-									"sid": 446152839526420,
-									"parameters": {
-										"animation": "\"right\""
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "mirror",
-									"objectClass": "Eve_spine",
-									"sid": 567313174481527,
-									"parameters": {
-										"is-mirrored": true
-									}
-								},
-								{
-									"id": "set-vector-x",
-									"objectClass": "Eve",
-									"sid": 622062348760572,
-									"behaviorType": "Platform",
-									"parameters": {
-										"vector-x": "-800"
-									}
-								},
-								{
-									"id": "set-vector-y",
-									"objectClass": "Eve",
-									"sid": 806642653343474,
-									"behaviorType": "Platform",
-									"parameters": {
-										"vector-y": "-spd"
-									}
-								},
-								{
-									"id": "set-visible",
-									"objectClass": "Fart",
-									"sid": 616623895942888,
-									"parameters": {
-										"visibility": "visible"
-									}
-								},
-								{
-									"id": "set-animation",
-									"objectClass": "Fart",
-									"sid": 841351423577755,
-									"parameters": {
-										"animation": "\"right\"",
-										"from": "beginning"
-									}
-								},
-								{
-									"id": "set-angle",
-									"objectClass": "Eve",
-									"sid": 298574255876629,
-									"disabled": true,
-									"parameters": {
-										"angle": "-30"
-									}
-								},
-								{
-									"id": "tween-one-property",
-									"objectClass": "Eve",
-									"sid": 441589740988158,
-									"behaviorType": "Tween",
-									"parameters": {
-										"tags": "\"\"",
-										"property": "offsetAngle",
-										"end-value": "-15",
-										"time": "0.5",
-										"ease": "default",
-										"destroy-on-complete": "no",
-										"loop": "no",
-										"ping-pong": "no",
-										"repeat-count": "1"
-									}
-								}
-							],
-							"sid": 464434672076224
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "is-animation-playing",
-									"objectClass": "btn_control",
-									"sid": 497859092121603,
-									"parameters": {
-										"animation": "\"mid\""
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-vector-y",
-									"objectClass": "Eve",
-									"sid": 515392457005555,
-									"behaviorType": "Platform",
-									"parameters": {
-										"vector-y": "-spd *1.3"
-									}
-								},
-								{
-									"id": "set-visible",
-									"objectClass": "Fart",
-									"sid": 697690067310087,
-									"parameters": {
-										"visibility": "visible"
-									}
-								},
-								{
-									"id": "set-animation",
-									"objectClass": "Fart",
-									"sid": 729363474482404,
-									"parameters": {
-										"animation": "\"mid\"",
-										"from": "beginning"
-									}
-								},
-								{
-									"id": "set-angle",
-									"objectClass": "Eve",
-									"sid": 220959294457724,
-									"disabled": true,
-									"parameters": {
-										"angle": "0"
-									}
-								},
-								{
-									"id": "tween-one-property",
-									"objectClass": "Eve",
-									"sid": 444491489705859,
+									"sid": 955835861756141,
 									"behaviorType": "Tween",
 									"parameters": {
 										"tags": "\"\"",
 										"property": "offsetAngle",
 										"end-value": "0",
-										"time": "0.3",
+										"time": "0.4",
 										"ease": "default",
 										"destroy-on-complete": "no",
 										"loop": "no",
@@ -652,240 +736,608 @@
 									}
 								}
 							],
-							"sid": 772137070455792
-						}
-					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "every-x-seconds",
-							"objectClass": "System",
-							"sid": 440078750496619,
-							"parameters": {
-								"interval-seconds": "0.02"
-							}
-						}
-					],
-					"actions": [],
-					"sid": 907241994876405,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-two-values",
-									"objectClass": "System",
-									"sid": 464819162421435,
-									"parameters": {
-										"first-value": "LayoutScale",
-										"comparison": 5,
-										"second-value": "0.5"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-layout-scale",
-									"objectClass": "System",
-									"sid": 397417858684775,
-									"parameters": {
-										"scale": "0.8 -  (  distance(Eve.X,Eve.y, ground.X, ground.Y ) /60000   )"
-									}
-								}
-							],
-							"sid": 780244527197691
+							"sid": 378082500344709
 						},
 						{
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "compare-two-values",
+									"id": "is-falling",
+									"objectClass": "Eve",
+									"sid": 814941769378364,
+									"behaviorType": "Platform"
+								},
+								{
+									"id": "trigger-once-while-true",
 									"objectClass": "System",
-									"sid": 361045505756996,
+									"sid": 213348441908763
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Eve_spine",
+									"sid": 460666975656932,
 									"parameters": {
-										"first-value": "LayoutScale",
-										"comparison": 2,
-										"second-value": "0.5"
+										"track-index": "0",
+										"animation": "\"fall\"",
+										"loop": false,
+										"additive": "enabled"
+									}
+								}
+							],
+							"sid": 781024673564478
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-jumping",
+									"objectClass": "Eve",
+									"sid": 629826297551782,
+									"behaviorType": "Platform"
+								},
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 231057834627716
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Eve_spine",
+									"sid": 174454646112315,
+									"parameters": {
+										"track-index": "0",
+										"animation": "\"fly\"",
+										"loop": true,
+										"additive": "disabled"
+									}
+								}
+							],
+							"sid": 346925623943202
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-touched-object",
+									"objectClass": "Touch",
+									"sid": 468497136836519,
+									"parameters": {
+										"object": "btn_control",
+										"type": "start"
+									}
+								},
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "Eve",
+									"sid": 294261450991607,
+									"parameters": {
+										"instance-variable": "can_fart"
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 852816432298282,
+									"parameters": {
+										"variable": "gas_lvl",
+										"comparison": 4,
+										"value": "0"
 									}
 								}
 							],
 							"actions": [
 								{
-									"id": "set-layout-scale",
+									"id": "subtract-from-eventvar",
 									"objectClass": "System",
-									"sid": 856067766977854,
+									"sid": 356294608927868,
 									"parameters": {
-										"scale": "0.5"
+										"variable": "gas_lvl",
+										"value": "1"
+									}
+								},
+								{
+									"id": "set-height",
+									"objectClass": "gas_lvl",
+									"sid": 341231655985903,
+									"parameters": {
+										"height": " ( 970/max_gas )  * gas_lvl"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "spfont_gas",
+									"sid": 587017670013357,
+									"parameters": {
+										"text": "gas_lvl"
+									}
+								},
+								{
+									"id": "shake",
+									"objectClass": "Eve",
+									"sid": 257026443337055,
+									"disabled": true,
+									"behaviorType": "ScrollTo",
+									"parameters": {
+										"magnitude": "20",
+										"duration": "0.4",
+										"mode": "reducing-magnitude"
+									}
+								},
+								{
+									"id": "toggle-boolean-instvar",
+									"objectClass": "Eve",
+									"sid": 899730992240693,
+									"parameters": {
+										"instance-variable": "can_fart"
+									}
+								},
+								{
+									"id": "start-timer",
+									"objectClass": "Eve",
+									"sid": 194411382452366,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "0.3",
+										"type": "once",
+										"tag": "\"can_fart\""
+									}
+								},
+								{
+									"id": "play-by-name",
+									"objectClass": "Audio",
+									"sid": 288722338544580,
+									"parameters": {
+										"folder": "sounds",
+										"audio-file-name": "\"fart_\" &  str( choose(1,2,3,4,5,6) )",
+										"loop": "not-looping",
+										"volume": "0",
+										"stereo-pan": "0",
+										"tag-optional": "\"\""
+									}
+								},
+								{
+									"id": "set-playback-rate",
+									"objectClass": "Audio",
+									"sid": 588560462287257,
+									"parameters": {
+										"tag": "\"\"",
+										"playback-rate": "timescale"
 									}
 								}
 							],
-							"sid": 308367431398554
-						}
-					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-on-floor",
-							"objectClass": "Eve",
-							"sid": 769245874087071,
-							"behaviorType": "Platform"
-						}
-					],
-					"actions": [
-						{
-							"id": "set-vector-y",
-							"objectClass": "Eve",
-							"sid": 896062447919876,
-							"behaviorType": "Platform",
-							"parameters": {
-								"vector-y": "-3000"
-							}
+							"sid": 141926688949695,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "btn_control",
+											"sid": 385685226775463,
+											"parameters": {
+												"animation": "\"left\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "mirror",
+											"objectClass": "Eve_spine",
+											"sid": 798206118092882,
+											"parameters": {
+												"is-mirrored": false
+											}
+										},
+										{
+											"id": "set-vector-x",
+											"objectClass": "Eve",
+											"sid": 181961498731111,
+											"behaviorType": "Platform",
+											"parameters": {
+												"vector-x": "800"
+											}
+										},
+										{
+											"id": "set-vector-y",
+											"objectClass": "Eve",
+											"sid": 156244221503617,
+											"behaviorType": "Platform",
+											"parameters": {
+												"vector-y": "- spd"
+											}
+										},
+										{
+											"id": "set-visible",
+											"objectClass": "Fart",
+											"sid": 516864376809078,
+											"parameters": {
+												"visibility": "visible"
+											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "Fart",
+											"sid": 178503837957104,
+											"parameters": {
+												"frame-number": "0"
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "Fart",
+											"sid": 926648324527391,
+											"parameters": {
+												"animation": "\"left\"",
+												"from": "beginning"
+											}
+										},
+										{
+											"id": "set-angle",
+											"objectClass": "Eve",
+											"sid": 192589422487921,
+											"disabled": true,
+											"parameters": {
+												"angle": "30"
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "Eve",
+											"sid": 288955439340528,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"\"",
+												"property": "offsetAngle",
+												"end-value": "15",
+												"time": "0.5",
+												"ease": "default",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 676413456850876
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "btn_control",
+											"sid": 326431853479853,
+											"parameters": {
+												"animation": "\"right\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "mirror",
+											"objectClass": "Eve_spine",
+											"sid": 670743279412218,
+											"parameters": {
+												"is-mirrored": true
+											}
+										},
+										{
+											"id": "set-vector-x",
+											"objectClass": "Eve",
+											"sid": 238479453747841,
+											"behaviorType": "Platform",
+											"parameters": {
+												"vector-x": "-800"
+											}
+										},
+										{
+											"id": "set-vector-y",
+											"objectClass": "Eve",
+											"sid": 633306936167123,
+											"behaviorType": "Platform",
+											"parameters": {
+												"vector-y": "-spd"
+											}
+										},
+										{
+											"id": "set-visible",
+											"objectClass": "Fart",
+											"sid": 974608463772985,
+											"parameters": {
+												"visibility": "visible"
+											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "Fart",
+											"sid": 155761916189610,
+											"parameters": {
+												"frame-number": "0"
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "Fart",
+											"sid": 410995828284081,
+											"parameters": {
+												"animation": "\"right\"",
+												"from": "beginning"
+											}
+										},
+										{
+											"id": "set-angle",
+											"objectClass": "Eve",
+											"sid": 190347145859864,
+											"disabled": true,
+											"parameters": {
+												"angle": "-30"
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "Eve",
+											"sid": 308349369092669,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"\"",
+												"property": "offsetAngle",
+												"end-value": "-15",
+												"time": "0.5",
+												"ease": "default",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 649012453437603
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "btn_control",
+											"sid": 709625452939619,
+											"parameters": {
+												"animation": "\"mid\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-vector-y",
+											"objectClass": "Eve",
+											"sid": 684627536197634,
+											"behaviorType": "Platform",
+											"parameters": {
+												"vector-y": "-spd *1.3"
+											}
+										},
+										{
+											"id": "set-visible",
+											"objectClass": "Fart",
+											"sid": 481935184547564,
+											"parameters": {
+												"visibility": "visible"
+											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "Fart",
+											"sid": 644069564838696,
+											"parameters": {
+												"frame-number": "0"
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "Fart",
+											"sid": 420997134639813,
+											"parameters": {
+												"animation": "\"mid\"",
+												"from": "beginning"
+											}
+										},
+										{
+											"id": "set-angle",
+											"objectClass": "Eve",
+											"sid": 890946438278212,
+											"disabled": true,
+											"parameters": {
+												"angle": "0"
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "Eve",
+											"sid": 436214806632957,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"\"",
+												"property": "offsetAngle",
+												"end-value": "0",
+												"time": "0.3",
+												"ease": "default",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 986320256105893
+								}
+							]
 						},
 						{
-							"id": "shake",
-							"objectClass": "Eve",
-							"sid": 422160241241035,
-							"disabled": true,
-							"behaviorType": "ScrollTo",
-							"parameters": {
-								"magnitude": "60",
-								"duration": "0.6",
-								"mode": "reducing-magnitude"
-							}
-						}
-					],
-					"sid": 362111284149146,
-					"children": [
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-floor",
+									"objectClass": "Eve",
+									"sid": 720116050957523,
+									"behaviorType": "Platform"
+								}
+							],
+							"actions": [
+								{
+									"id": "set-vector-y",
+									"objectClass": "Eve",
+									"sid": 454923844180888,
+									"behaviorType": "Platform",
+									"parameters": {
+										"vector-y": "-3000"
+									}
+								},
+								{
+									"id": "shake",
+									"objectClass": "Eve",
+									"sid": 773379552274041,
+									"disabled": true,
+									"behaviorType": "ScrollTo",
+									"parameters": {
+										"magnitude": "60",
+										"duration": "0.6",
+										"mode": "reducing-magnitude"
+									}
+								}
+							],
+							"sid": 997944506352093,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "on-collision-with-another-object",
+											"objectClass": "Eve",
+											"sid": 128560360623369,
+											"parameters": {
+												"object": "cloud"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-boolean-instvar",
+											"objectClass": "cloud",
+											"sid": 498167089395336,
+											"parameters": {
+												"instance-variable": "can_touch",
+												"value": "false"
+											}
+										},
+										{
+											"id": "set-collisions-enabled",
+											"objectClass": "cloud",
+											"sid": 671388114458280,
+											"parameters": {
+												"collisions": "disabled"
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "cloud",
+											"sid": 526017460809651,
+											"parameters": {
+												"animation": "Self.AnimationName & \"b\"",
+												"from": "beginning"
+											}
+										}
+									],
+									"sid": 337718667353165
+								}
+							]
+						},
 						{
 							"eventType": "block",
 							"conditions": [
 								{
 									"id": "on-collision-with-another-object",
 									"objectClass": "Eve",
-									"sid": 404584368318801,
+									"sid": 300253362675746,
 									"parameters": {
-										"object": "cloud"
+										"object": "food"
 									}
 								}
 							],
 							"actions": [
 								{
-									"id": "set-boolean-instvar",
-									"objectClass": "cloud",
-									"sid": 907613321101401,
-									"parameters": {
-										"instance-variable": "can_touch",
-										"value": "false"
-									}
-								},
-								{
 									"id": "set-collisions-enabled",
-									"objectClass": "cloud",
-									"sid": 318877723472346,
+									"objectClass": "food",
+									"sid": 168706592766260,
 									"parameters": {
 										"collisions": "disabled"
 									}
 								},
 								{
-									"id": "set-animation",
-									"objectClass": "cloud",
-									"sid": 750501145262980,
+									"id": "move-to-layer",
+									"objectClass": "food",
+									"sid": 668976973279621,
 									"parameters": {
-										"animation": "Self.AnimationName & \"b\"",
-										"from": "beginning"
+										"layer": "\"ui\""
+									}
+								},
+								{
+									"id": "set-position",
+									"objectClass": "food",
+									"sid": 481525323506016,
+									"parameters": {
+										"x": "LayerToLayerX(\"gameplay\",\"ui\", Self.X, Self.Y)",
+										"y": "LayerToLayery(\"gameplay\",\"ui\", Self.X, Self.Y)"
+									}
+								},
+								{
+									"id": "set-angle",
+									"objectClass": "food",
+									"sid": 391867071380961,
+									"parameters": {
+										"angle": "0"
+									}
+								},
+								{
+									"id": "set-animation-frame",
+									"objectClass": "food",
+									"sid": 581971964211753,
+									"parameters": {
+										"frame-number": "1"
+									}
+								},
+								{
+									"id": "set-active",
+									"objectClass": "food",
+									"sid": 696122942148242,
+									"behaviorType": "Sine",
+									"parameters": {
+										"state": "inactive"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "food",
+									"sid": 818627260622537,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"a_1\"",
+										"property": "offsetY",
+										"end-value": "Self.Y-300",
+										"time": "0.5",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
 									}
 								}
 							],
-							"sid": 533994517514771
+							"sid": 708592427263827
 						}
 					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-collision-with-another-object",
-							"objectClass": "Eve",
-							"sid": 743820697482810,
-							"parameters": {
-								"object": "food"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-collisions-enabled",
-							"objectClass": "food",
-							"sid": 968239454559904,
-							"parameters": {
-								"collisions": "disabled"
-							}
-						},
-						{
-							"id": "move-to-layer",
-							"objectClass": "food",
-							"sid": 345420302552470,
-							"parameters": {
-								"layer": "\"ui\""
-							}
-						},
-						{
-							"id": "set-position",
-							"objectClass": "food",
-							"sid": 812575003913753,
-							"parameters": {
-								"x": "LayerToLayerX(\"gameplay\",\"ui\", Self.X, Self.Y)",
-								"y": "LayerToLayery(\"gameplay\",\"ui\", Self.X, Self.Y)"
-							}
-						},
-						{
-							"id": "set-angle",
-							"objectClass": "food",
-							"sid": 288841209099314,
-							"parameters": {
-								"angle": "0"
-							}
-						},
-						{
-							"id": "set-animation-frame",
-							"objectClass": "food",
-							"sid": 776352258544359,
-							"parameters": {
-								"frame-number": "1"
-							}
-						},
-						{
-							"id": "set-active",
-							"objectClass": "food",
-							"sid": 429162714902015,
-							"behaviorType": "Sine",
-							"parameters": {
-								"state": "inactive"
-							}
-						},
-						{
-							"id": "tween-one-property",
-							"objectClass": "food",
-							"sid": 273104215265641,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "\"a_1\"",
-								"property": "offsetY",
-								"end-value": "Self.Y-300",
-								"time": "0.5",
-								"ease": "default",
-								"destroy-on-complete": "no",
-								"loop": "no",
-								"ping-pong": "no",
-								"repeat-count": "1"
-							}
-						}
-					],
-					"sid": 495709523938434
 				},
 				{
 					"eventType": "block",
@@ -1114,21 +1566,6 @@
 						}
 					],
 					"sid": 488779666323201
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "every-x-seconds",
-							"objectClass": "System",
-							"sid": 748042507053872,
-							"parameters": {
-								"interval-seconds": "0.1"
-							}
-						}
-					],
-					"actions": [],
-					"sid": 477915721093093
 				}
 			],
 			"sid": 213567141066993
@@ -1146,11 +1583,11 @@
 						{
 							"id": "compare-eventvar",
 							"objectClass": "System",
-							"sid": 985104792047786,
+							"sid": 369935398670989,
 							"parameters": {
 								"variable": "game_state",
 								"comparison": 0,
-								"value": "\"start\""
+								"value": "\"01_getready\""
 							}
 						}
 					],
@@ -1332,6 +1769,91 @@
 				}
 			],
 			"sid": 977491469638558
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Adam",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 508451541208388,
+							"parameters": {
+								"variable": "game_state",
+								"comparison": 0,
+								"value": "\"00_idle\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "add-animation",
+							"objectClass": "Adam",
+							"sid": 865542551777549,
+							"parameters": {
+								"track-index": "0",
+								"animation": "\"tool\" & choose(\"1\",\"2\",\"3\",\"4\")",
+								"loop": false,
+								"delay": "0",
+								"additive": "disabled"
+							}
+						},
+						{
+							"id": "add-animation",
+							"objectClass": "Adam",
+							"sid": 161385821772956,
+							"disabled": true,
+							"parameters": {
+								"track-index": "0",
+								"animation": "\"tool\" & choose(\"1\",\"2\",\"3\", \"4\")",
+								"loop": false,
+								"delay": "0",
+								"additive": "disabled"
+							}
+						}
+					],
+					"sid": 365647598282775,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-animation-event",
+									"objectClass": "Adam",
+									"sid": 358197673420517,
+									"parameters": {
+										"event": "\"end\"",
+										"track": "0",
+										"animation": "\"\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation",
+									"objectClass": "Adam",
+									"sid": 896743189507212,
+									"disabled": true,
+									"parameters": {
+										"track-index": "-1",
+										"animation": "\"tool\" &  choose(\"1\",\"2\",\"3\")",
+										"loop": false,
+										"additive": "disabled"
+									}
+								}
+							],
+							"sid": 863358373659199
+						}
+					]
+				}
+			],
+			"sid": 716294580085277
 		}
 	],
 	"sid": 489381260686395

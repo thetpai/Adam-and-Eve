@@ -25,9 +25,9 @@
 					"locked": false,
 					"world": {
 						"x": 540,
-						"y": 956,
-						"width": 2922.7554738832923,
-						"height": 2729.7433199476036,
+						"y": 960,
+						"width": 4421.437186210341,
+						"height": 4129.455485234187,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -60,9 +60,9 @@
 			],
 			"isTransparent": false,
 			"sampling": "auto",
-			"parallaxX": 1,
-			"parallaxY": 1,
-			"scaleRate": 1,
+			"parallaxX": 0,
+			"parallaxY": 0,
+			"scaleRate": 0,
 			"forceOwnTexture": false,
 			"renderingMode": "3d",
 			"drawOrder": "z-order",
@@ -75,7 +75,207 @@
 			"name": "gameplay",
 			"overriden": 0,
 			"subLayers": [],
-			"instances": [],
+			"instances": [
+				{
+					"type": "Eve_spine",
+					"properties": {
+						"spine-atlas-file": 368806425534166,
+						"spine-skeleton-file": 793081440858661,
+						"spine-loader-scale": 0.4,
+						"spine-skin": "",
+						"spine-animation": "idle",
+						"spine-debug-skeleton": false,
+						"spine-enable-collision": false,
+						"spine-bounds-provider": "setup",
+						"spine-bounds-provider-move": false,
+						"spine-bounds-offset-x": 0,
+						"spine-bounds-offset-y": 0,
+						"spine-bounds-offset-angle": 0,
+						"spine-offset-scale-x": 1,
+						"spine-offset-scale-y": 1,
+						"spine-slot-z-offset": 0
+					},
+					"uid": 30,
+					"sid": 938739378294559,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {
+						"Pin": {
+							"properties": {
+								"destroy": false
+							}
+						}
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 3052,
+						"y": 3345,
+						"width": 236.00003616926244,
+						"height": 290.5840321828786,
+						"originX": 0.5399192395452694,
+						"originY": 0.9814659419926816,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "cannon",
+					"properties": {
+						"spine-atlas-file": 224762802446306,
+						"spine-skeleton-file": 693516400793751,
+						"spine-loader-scale": 1.2,
+						"spine-skin": "",
+						"spine-animation": "c3",
+						"spine-debug-skeleton": false,
+						"spine-enable-collision": false,
+						"spine-bounds-provider": "setup",
+						"spine-bounds-provider-move": false,
+						"spine-bounds-offset-x": 0,
+						"spine-bounds-offset-y": 0,
+						"spine-bounds-offset-angle": 0,
+						"spine-offset-scale-x": 1,
+						"spine-offset-scale-y": 1,
+						"spine-slot-z-offset": 0
+					},
+					"uid": 33,
+					"sid": 518141937442331,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 3037,
+						"y": 3910,
+						"width": 538.8000183248271,
+						"height": 646.7602130586404,
+						"originX": 0.5596829161710399,
+						"originY": 0.9852482525115072,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "Adam",
+					"properties": {
+						"spine-atlas-file": 665892777497176,
+						"spine-skeleton-file": 482701119518771,
+						"spine-loader-scale": 0.42,
+						"spine-skin": "",
+						"spine-animation": "",
+						"spine-debug-skeleton": false,
+						"spine-enable-collision": false,
+						"spine-bounds-provider": "setup",
+						"spine-bounds-provider-move": false,
+						"spine-bounds-offset-x": 0,
+						"spine-bounds-offset-y": 0,
+						"spine-bounds-offset-angle": 0,
+						"spine-offset-scale-x": 1,
+						"spine-offset-scale-y": 1,
+						"spine-slot-z-offset": 0
+					},
+					"uid": 39,
+					"sid": 992420439793853,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 2602,
+						"y": 3875,
+						"width": 271.7190253981055,
+						"height": 308.80084477691753,
+						"originX": 0.44227973617979827,
+						"originY": 0.9626813033370095,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "Eve",
+					"properties": {
+						"initially-visible": false,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 43,
+					"sid": 463843065278746,
+					"tags": "",
+					"instanceVariables": {
+						"can_fart": true
+					},
+					"behaviors": {
+						"Platform": {
+							"properties": {
+								"max-speed": 5000,
+								"acceleration": 5000,
+								"deceleration": 1000,
+								"jump-strength": 5000,
+								"gravity": 6000,
+								"max-fall-speed": 7000,
+								"double-jump": false,
+								"jump-sustain": 0,
+								"default-controls": false,
+								"enabled": false
+							}
+						},
+						"ScrollTo": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"Timer": {
+							"properties": {}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"materialSurfaceType": "smooth",
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 2772,
+						"y": 2950,
+						"width": 132,
+						"height": 219,
+						"originX": 0.5116363636363637,
+						"originY": 0.8995151515151516,
+						"color": [
+							1,
+							1,
+							1,
+							0.24
+						],
+						"z": 0,
+						"angle": 0
+					}
+				}
+			],
 			"sid": 628255916690898,
 			"effectTypes": [],
 			"isInitiallyVisible": true,
@@ -111,6 +311,180 @@
 			"overriden": 0,
 			"subLayers": [],
 			"instances": [
+				{
+					"type": "button",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "sound",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 20,
+					"sid": 641076514127203,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {
+						"Sine": {
+							"properties": {
+								"movement": "width",
+								"wave": "sine",
+								"period": 2,
+								"period-random": 0,
+								"period-offset": 0,
+								"period-offset-random": 0,
+								"magnitude": 20,
+								"magnitude-random": 0,
+								"enabled": true,
+								"live-preview": false
+							}
+						},
+						"Anchor": {
+							"properties": {
+								"left-edge": "window-left",
+								"top-edge": "window-top",
+								"right-edge": "none",
+								"bottom-edge": "none",
+								"enabled": true
+							}
+						}
+					},
+					"materialSurfaceType": "smooth",
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 535,
+						"y": 773,
+						"width": 174,
+						"height": 174,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "button",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "play",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 41,
+					"sid": 754029335529448,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {
+						"Sine": {
+							"properties": {
+								"movement": "width",
+								"wave": "sine",
+								"period": 2,
+								"period-random": 0,
+								"period-offset": 0,
+								"period-offset-random": 0,
+								"magnitude": 20,
+								"magnitude-random": 0,
+								"enabled": true,
+								"live-preview": false
+							}
+						},
+						"Anchor": {
+							"properties": {
+								"left-edge": "window-left",
+								"top-edge": "window-top",
+								"right-edge": "none",
+								"bottom-edge": "none",
+								"enabled": true
+							}
+						}
+					},
+					"materialSurfaceType": "smooth",
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 558,
+						"y": 1051,
+						"width": 214,
+						"height": 186,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
+				{
+					"type": "button",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "story",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 42,
+					"sid": 756051263642018,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {
+						"Sine": {
+							"properties": {
+								"movement": "width",
+								"wave": "sine",
+								"period": 2,
+								"period-random": 0,
+								"period-offset": 0,
+								"period-offset-random": 0,
+								"magnitude": 20,
+								"magnitude-random": 0,
+								"enabled": true,
+								"live-preview": false
+							}
+						},
+						"Anchor": {
+							"properties": {
+								"left-edge": "window-left",
+								"top-edge": "window-top",
+								"right-edge": "none",
+								"bottom-edge": "none",
+								"enabled": true
+							}
+						}
+					},
+					"materialSurfaceType": "smooth",
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 558,
+						"y": 1267,
+						"width": 214,
+						"height": 186,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"z": 0,
+						"angle": 0
+					}
+				},
 				{
 					"type": "Logo",
 					"properties": {
@@ -166,14 +540,23 @@
 								"enabled": true,
 								"live-preview": false
 							}
+						},
+						"Anchor": {
+							"properties": {
+								"left-edge": "none",
+								"top-edge": "window-top",
+								"right-edge": "none",
+								"bottom-edge": "none",
+								"enabled": true
+							}
 						}
 					},
 					"materialSurfaceType": "smooth",
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 540,
-						"y": 420,
+						"x": 540.5,
+						"y": 307,
 						"width": 749,
 						"height": 485,
 						"originX": 0.5,
@@ -208,9 +591,9 @@
 			],
 			"isTransparent": true,
 			"sampling": "auto",
-			"parallaxX": 1,
-			"parallaxY": 1,
-			"scaleRate": 1,
+			"parallaxX": 0,
+			"parallaxY": 0,
+			"scaleRate": 0,
 			"forceOwnTexture": false,
 			"renderingMode": "3d",
 			"drawOrder": "z-order",
@@ -223,13 +606,13 @@
 	"sid": 310662203845476,
 	"nonworld-instances": [],
 	"effectTypes": [],
-	"width": 1080,
-	"height": 1920,
+	"width": 6000,
+	"height": 6000,
 	"unboundedScrolling": false,
 	"sampling": "auto",
 	"ambientLight": 0.03,
 	"vpX": 0.5,
 	"vpY": 0.5,
 	"projection": "perspective",
-	"eventSheet": "Logo"
+	"eventSheet": "e_main"
 }
